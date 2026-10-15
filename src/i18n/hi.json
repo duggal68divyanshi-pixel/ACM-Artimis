@@ -93,7 +93,9 @@
     "nextPhoto": "अगली फ़ोटो",
     "photoCount": "फ़ोटो {current}/{total}",
     "allTrades": "सभी काम",
-    "noJobsForTrade": "इस काम में अभी कोई नया काम नहीं है"
+    "noJobsForTrade": "इस काम में अभी कोई नया काम नहीं है",
+    "mute": "म्यूट करें",
+    "unmute": "आवाज़ चालू करें"
   },
   "quotes": {
     "title": "मेरी बोलियां",

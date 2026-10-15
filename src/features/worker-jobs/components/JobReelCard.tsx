@@ -24,6 +24,8 @@ import {
   ChevronLeft,
   ChevronRight,
   ChevronsDown,
+  Volume2,
+  VolumeX,
 } from 'lucide-react';
 
 const TRADE_ICONS: Record<string, React.ReactNode> = {
@@ -86,6 +88,16 @@ export const JobReelCard: React.FC<JobReelCardProps> = ({
   const [photoIndex, setPhotoIndex] = useState(0);
   const safePhotoIndex = Math.min(photoIndex, Math.max(images.length - 1, 0));
 
+  // A real local video file beats the gradient placeholder whenever one is set.
+  const hasRealVideo = job.mediaType === 'video' && !!job.videoUrl;
+  const [isMuted, setIsMuted] = useState(true);
+  const [videoFailed, setVideoFailed] = useState(false);
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsMuted((prev) => !prev);
+  };
+
   const goToPhoto = (e: React.MouseEvent, direction: 1 | -1) => {
     e.stopPropagation();
     setPhotoIndex((prev) => {
@@ -114,23 +126,40 @@ export const JobReelCard: React.FC<JobReelCardProps> = ({
 
   return (
     <div className="relative w-full h-full bg-[#111B21] text-white flex flex-col overflow-hidden select-none">
-      {/* Backdrop — stands in for the job video/photos, zero network dependency */}
-      <div
-        className={`absolute inset-0 z-0 bg-gradient-to-br ${gradient} transition-opacity duration-150`}
-        key={isCarousel ? `photo-${safePhotoIndex}` : 'video'}
-      >
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div
-            className={`w-40 h-40 text-white/10 ${isActive && !isCarousel ? 'animate-pulse' : ''}`}
-            style={isCarousel ? { transform: `scale(${1 + safePhotoIndex * 0.06}) rotate(${safePhotoIndex * 4}deg)` } : undefined}
-            aria-hidden="true"
-          >
-            {TRADE_ICONS[job.trade] || TRADE_ICONS.labourer}
-          </div>
+      {/* Backdrop — a real local video when the job has one, otherwise the
+          network-free trade gradient so the card is never a blank black frame. */}
+      {hasRealVideo && !videoFailed ? (
+        <div className="absolute inset-0 z-0 bg-[#111B21]">
+          <video
+            key={job.videoUrl}
+            src={job.videoUrl}
+            className="w-full h-full object-cover"
+            playsInline
+            loop
+            autoPlay={isActive}
+            muted={isMuted}
+            onError={() => setVideoFailed(true)}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#111B21]/70 via-transparent to-[#111B21]/95" />
         </div>
-        {/* Scrim so every overlaid label stays readable in bright sunlight */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#111B21]/70 via-transparent to-[#111B21]/95" />
-      </div>
+      ) : (
+        <div
+          className={`absolute inset-0 z-0 bg-gradient-to-br ${gradient} transition-opacity duration-150`}
+          key={isCarousel ? `photo-${safePhotoIndex}` : 'video'}
+        >
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div
+              className={`w-40 h-40 text-white/10 ${isActive && !isCarousel ? 'animate-pulse' : ''}`}
+              style={isCarousel ? { transform: `scale(${1 + safePhotoIndex * 0.06}) rotate(${safePhotoIndex * 4}deg)` } : undefined}
+              aria-hidden="true"
+            >
+              {TRADE_ICONS[job.trade] || TRADE_ICONS.labourer}
+            </div>
+          </div>
+          {/* Scrim so every overlaid label stays readable in bright sunlight */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#111B21]/70 via-transparent to-[#111B21]/95" />
+        </div>
+      )}
 
       {/* Carousel side tap targets — absolutely centered on the edges only, so they
           never compete with the top-stack's vertical space below. */}
@@ -172,19 +201,26 @@ export const JobReelCard: React.FC<JobReelCardProps> = ({
           </div>
 
           <div className="flex items-center gap-1.5 shrink-0">
-            <span className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-pill bg-black/50 backdrop-blur-md text-white/80 font-semibold text-[11px] border border-white/10 tabular-nums">
-              {isCarousel ? (
-                <>
-                  <Images className="w-3.5 h-3.5" />
-                  {t('workerJobs.photoCount', { current: safePhotoIndex + 1, total: images.length })}
-                </>
-              ) : (
-                <>
-                  <Video className="w-3.5 h-3.5" />
-                  {t('workerJobs.demoReel')}
-                </>
-              )}
-            </span>
+            {isCarousel ? (
+              <span className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-pill bg-black/50 backdrop-blur-md text-white/80 font-semibold text-[11px] border border-white/10 tabular-nums">
+                <Images className="w-3.5 h-3.5" />
+                {t('workerJobs.photoCount', { current: safePhotoIndex + 1, total: images.length })}
+              </span>
+            ) : hasRealVideo && !videoFailed ? (
+              <button
+                type="button"
+                onClick={toggleMute}
+                aria-label={isMuted ? t('workerJobs.unmute') : t('workerJobs.mute')}
+                className="w-9 h-9 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-white active:scale-90"
+              >
+                {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+              </button>
+            ) : (
+              <span className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-pill bg-black/50 backdrop-blur-md text-white/80 font-semibold text-[11px] border border-white/10 tabular-nums">
+                <Video className="w-3.5 h-3.5" />
+                {t('workerJobs.demoReel')}
+              </span>
+            )}
             <ReportBlockMenu
               targetUserId={job.employerId}
               context="job"

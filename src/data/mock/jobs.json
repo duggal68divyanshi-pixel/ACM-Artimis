@@ -3,7 +3,7 @@
     "id": "job_1",
     "employerId": "emp_1",
     "trade": "plumber",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-water-flowing-from-a-leaking-pipe-42358-large.mp4",
+    "videoUrl": "/videos/work-reel-1.mp4",
     "description": "Fix bathroom concealed pipe leakage and reinstall western commode with new gasket and seal.",
     "suggestedPrice": 650,
     "location": {
@@ -47,7 +47,7 @@
     "id": "job_3",
     "employerId": "emp_2",
     "trade": "electrician",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-electrician-fixing-wires-in-a-breaker-box-42360-large.mp4",
+    "videoUrl": "/videos/work-reel-2.mp4",
     "description": "3 ceiling fans installation & switchboard wiring in 2 rooms of flat.",
     "suggestedPrice": 800,
     "location": {
@@ -67,7 +67,7 @@
     "id": "job_4",
     "employerId": "emp_3",
     "trade": "carpenter",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-carpenter-measuring-wood-plank-42361-large.mp4",
+    "videoUrl": "/videos/work-reel-3.mp4",
     "description": "Fix master bedroom wardrobe sliding channel and replace lock handles.",
     "suggestedPrice": 550,
     "location": {
@@ -111,7 +111,7 @@
     "id": "job_6",
     "employerId": "emp_2",
     "trade": "mason",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-construction-worker-laying-bricks-with-cement-42363-large.mp4",
+    "videoUrl": "/videos/work-reel-4.mp4",
     "description": "Repair boundary wall brickwork cracks and apply smooth waterproof cement plaster.",
     "suggestedPrice": 1500,
     "location": {
@@ -131,7 +131,6 @@
     "id": "job_7",
     "employerId": "emp_2",
     "trade": "electrician",
-    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-electrician-fixing-wires-in-a-breaker-box-42360-large.mp4",
     "description": "Main distribution board MCB tripping fix and load balancing for AC connection.",
     "suggestedPrice": 700,
     "location": {

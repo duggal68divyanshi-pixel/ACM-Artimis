@@ -93,7 +93,9 @@
     "nextPhoto": "Next photo",
     "photoCount": "Photo {current}/{total}",
     "allTrades": "All trades",
-    "noJobsForTrade": "No open jobs in this trade right now"
+    "noJobsForTrade": "No open jobs in this trade right now",
+    "mute": "Mute",
+    "unmute": "Unmute"
   },
   "quotes": {
     "title": "My quotes",
