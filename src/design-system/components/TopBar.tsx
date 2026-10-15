@@ -82,8 +82,8 @@ export const TopBar: React.FC<TopBarProps> = ({
             tabIndex={0}
             aria-label={`${APP_NAME} home`}
           >
-            <div className="w-8 h-8 rounded-lg bg-accent text-[#111B21] flex items-center justify-center font-extrabold text-title-lg shadow-sm">
-              च
+            <div className="w-8 h-8 rounded-lg bg-white/95 flex items-center justify-center shadow-sm overflow-hidden shrink-0">
+              <img src="/logo.svg" alt="" className="w-6 h-6" aria-hidden="true" />
             </div>
             <div className="flex flex-col">
               <span className="font-extrabold text-title-lg tracking-tight leading-none text-white">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Job } from '../../../data/types';
 import { formatCurrency } from '../../../utils/currency';
 import { formatDistance } from '../../../utils/distance';
@@ -93,6 +93,27 @@ export const JobReelCard: React.FC<JobReelCardProps> = ({
   const hasRealVideo = job.mediaType === 'video' && !!job.videoUrl;
   const [isMuted, setIsMuted] = useState(true);
   const [videoFailed, setVideoFailed] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // The `autoPlay` attribute only fires the moment a <video> is first mounted —
+  // toggling it later (e.g. when this card scrolls into view and `isActive`
+  // flips true) does nothing on its own. Every snap card in the feed mounts at
+  // once, so without this effect only the very first card would ever actually
+  // play; every other one would just sit on its first frame. Driving play/pause
+  // imperatively off `isActive` is what makes scrolling start/stop playback.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !hasRealVideo) return;
+    if (isActive) {
+      video.play().catch(() => {
+        // Autoplay can still be blocked (e.g. a strict browser setting) even
+        // muted — that's fine, the poster frame just stays put; not an error
+        // worth surfacing since the card remains fully usable either way.
+      });
+    } else {
+      video.pause();
+    }
+  }, [isActive, hasRealVideo]);
 
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -133,6 +154,7 @@ export const JobReelCard: React.FC<JobReelCardProps> = ({
         <div className="absolute inset-0 z-0 bg-[#111B21]">
           <video
             key={job.videoUrl}
+            ref={videoRef}
             src={job.videoUrl}
             className="w-full h-full object-cover"
             playsInline

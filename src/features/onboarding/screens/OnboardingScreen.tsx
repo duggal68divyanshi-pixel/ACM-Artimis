@@ -130,8 +130,8 @@ export const OnboardingScreen: React.FC = () => {
     <div className="min-h-screen bg-surface-canvas flex flex-col justify-between max-w-md mx-auto p-4 sm:p-6 select-none">
       {/* Brand Header */}
       <div className="pt-4 text-center">
-        <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary text-white shadow-tier-2 mb-2">
-          <span className="text-headline-md font-extrabold text-accent">च</span>
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white shadow-tier-2 mb-2 overflow-hidden">
+          <img src="/logo.svg" alt="" className="w-12 h-12" aria-hidden="true" />
         </div>
         <h1 className="text-headline-lg font-extrabold text-on-surface">
           {language === 'hi' ? APP_NAME_DEVANAGARI : APP_NAME}
