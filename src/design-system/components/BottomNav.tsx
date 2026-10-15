@@ -9,6 +9,7 @@ import {
   Briefcase,
   Plus,
   MessageSquare,
+  Compass,
 } from 'lucide-react';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { useMockAuthSession } from '../../hooks/useMockAuthSession';
@@ -88,12 +89,17 @@ export const BottomNav: React.FC = () => {
     );
   }
 
-  // Employer navigation: 4 tabs with big center post action
+  // Employer navigation: 5 tabs with big center post action
   const employerTabs = [
     {
       path: '/my-jobs',
       label: t('nav.myJobs'),
       icon: Briefcase,
+    },
+    {
+      path: '/discover-workers',
+      label: t('nav.discover'),
+      icon: Compass,
     },
     {
       path: '/post-job',

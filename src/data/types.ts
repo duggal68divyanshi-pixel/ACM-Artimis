@@ -26,7 +26,17 @@ export interface WorkerProfile {
     videoUrl: string;
     thumbUrl: string;
     caption: string;
+    /** Groups the grid into labeled sections on the profile, e.g. "Repairs",
+     *  "Installations" — defaults to a single general section when absent. */
+    category?: string;
   }[];
+}
+
+export interface Follow {
+  id: string;
+  followerId: string; // usually an employer
+  followingId: string; // the worker being followed
+  createdAt: string;
 }
 
 export interface EmployerProfile {

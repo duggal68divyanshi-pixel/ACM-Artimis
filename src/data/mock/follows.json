@@ -1,0 +1,8 @@
+[
+  {
+    "id": "follow_1",
+    "followerId": "emp_2",
+    "followingId": "worker_1",
+    "createdAt": "2026-10-10T09:00:00.000Z"
+  }
+]

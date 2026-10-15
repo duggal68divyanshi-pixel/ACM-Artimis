@@ -34,7 +34,8 @@
     "me": "मेरी प्रोफाइल",
     "myJobs": "मेरे काम",
     "post": "काम डालें",
-    "messages": "बातचीत"
+    "messages": "बातचीत",
+    "discover": "खोजें"
   },
   "onboarding": {
     "welcome": "चौक पर आपका स्वागत है",
@@ -155,7 +156,9 @@
     "removePhoto": "फ़ोटो हटाएं",
     "photosCountHint": "{max} में से {count} फ़ोटो जोड़ी गईं",
     "mediaRequiredVideo": "पहले काम का वीडियो रिकॉर्ड करें",
-    "mediaRequiredPhotos": "पहले काम की कम से कम एक फ़ोटो जोड़ें"
+    "mediaRequiredPhotos": "पहले काम की कम से कम एक फ़ोटो जोड़ें",
+    "suggestedWorkers": "सुझाए गए कारीगर",
+    "browseAll": "सभी देखें"
   },
   "negotiation": {
     "chatTitle": "बातचीत और मोलभाव",
@@ -245,7 +248,18 @@
     "radiusSetting": "काम खोजने का दायरा",
     "todayAvailability": "आज के काम के लिए तैयार",
     "diarySummary": "मेरी कमाई डायरी",
-    "viewDiary": "पूरी डायरी देखें"
+    "viewDiary": "पूरी डायरी देखें",
+    "generalWork": "सामान्य काम",
+    "workerNotFound": "कारीगर नहीं मिला",
+    "rating": "रेटिंग",
+    "jobsDone": "काम पूरे",
+    "followers": "फॉलोअर्स",
+    "follow": "फॉलो करें",
+    "following": "फॉलो कर रहे हैं",
+    "call": "कॉल करें",
+    "reviews": "समीक्षाएं",
+    "noReviewsYet": "अभी कोई समीक्षा नहीं",
+    "paidOnTime": "समय पर भुगतान"
   },
   "diary": {
     "title": "कमाई डायरी (लेखा-जोखा)",
@@ -271,5 +285,13 @@
     "blockExplain": "{name} आपका काम या प्रोफ़ाइल नहीं देख पाएंगे, और आप भी उनका नहीं देखेंगे।",
     "confirmBlock": "ब्लॉक करें",
     "blockDone": "ब्लॉक हो गया"
+  },
+  "discover": {
+    "title": "कारीगर खोजें",
+    "empty": "अभी दिखाने के लिए कोई कारीगर नहीं",
+    "jobsCount": "{count} काम",
+    "followersCount": "{count} फॉलोअर्स",
+    "viewProfile": "प्रोफ़ाइल देखें",
+    "endTitle": "अभी के लिए बस इतना ही"
   }
 }

@@ -14,6 +14,8 @@ import { MessagesInboxScreen } from '../features/negotiation/screens/MessagesInb
 import { JobExecutionScreen } from '../features/execution/screens/JobExecutionScreen';
 import { RateJobScreen } from '../features/reviews/screens/RateJobScreen';
 import { WorkerProfileScreen } from '../features/profile/screens/WorkerProfileScreen';
+import { WorkerPublicProfileScreen } from '../features/profile/screens/WorkerPublicProfileScreen';
+import { DiscoverWorkersScreen } from '../features/profile/screens/DiscoverWorkersScreen';
 import { ChowkMapScreen } from '../features/chowk-map/screens/ChowkMapScreen';
 import { RightsScreen } from '../features/rights/screens/RightsScreen';
 import { DiaryScreen } from '../features/diary/screens/DiaryScreen';
@@ -58,6 +60,8 @@ export const AppRoutes: React.FC = () => {
       <Route path="/job-execution/:jobId" element={<JobExecutionScreen />} />
       <Route path="/rate/:jobId" element={<RateJobScreen />} />
       <Route path="/profile" element={<WorkerProfileScreen />} />
+      <Route path="/worker/:workerId" element={<WorkerPublicProfileScreen />} />
+      <Route path="/discover-workers" element={<DiscoverWorkersScreen />} />
 
       {/* Catch-all fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />

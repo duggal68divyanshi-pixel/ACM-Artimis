@@ -34,7 +34,8 @@
     "me": "Me",
     "myJobs": "My jobs",
     "post": "Post",
-    "messages": "Messages"
+    "messages": "Messages",
+    "discover": "Discover"
   },
   "onboarding": {
     "welcome": "Welcome to Chowk",
@@ -155,7 +156,9 @@
     "removePhoto": "Remove photo",
     "photosCountHint": "{count} of {max} photos added",
     "mediaRequiredVideo": "Record a video of the work first",
-    "mediaRequiredPhotos": "Add at least one photo of the work first"
+    "mediaRequiredPhotos": "Add at least one photo of the work first",
+    "suggestedWorkers": "Suggested workers",
+    "browseAll": "Browse all"
   },
   "negotiation": {
     "chatTitle": "Negotiation",
@@ -245,7 +248,18 @@
     "radiusSetting": "Job discovery radius",
     "todayAvailability": "Available for same-day jobs",
     "diarySummary": "My earnings diary",
-    "viewDiary": "View complete diary"
+    "viewDiary": "View complete diary",
+    "generalWork": "General work",
+    "workerNotFound": "Worker not found",
+    "rating": "Rating",
+    "jobsDone": "Jobs done",
+    "followers": "Followers",
+    "follow": "Follow",
+    "following": "Following",
+    "call": "Call",
+    "reviews": "Reviews",
+    "noReviewsYet": "No reviews yet",
+    "paidOnTime": "Paid on time"
   },
   "diary": {
     "title": "Kamai diary (Earnings)",
@@ -271,5 +285,13 @@
     "blockExplain": "{name} won't be able to see your jobs or profile, and you won't see theirs.",
     "confirmBlock": "Block",
     "blockDone": "Blocked"
+  },
+  "discover": {
+    "title": "Discover workers",
+    "empty": "No workers to show right now",
+    "jobsCount": "{count} jobs",
+    "followersCount": "{count} followers",
+    "viewProfile": "View profile",
+    "endTitle": "That's everyone for now"
   }
 }

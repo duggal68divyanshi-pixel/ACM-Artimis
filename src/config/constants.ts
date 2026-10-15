@@ -17,6 +17,7 @@ export const LOCAL_STORAGE_KEYS = {
   DIARY: 'chowk_diary_v1',
   REPORTS: 'chowk_reports_v1',
   BLOCKS: 'chowk_blocks_v1',
+  FOLLOWS: 'chowk_follows_v1',
 } as const;
 
 export const AVAILABLE_TRADES = [

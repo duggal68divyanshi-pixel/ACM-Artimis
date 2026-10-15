@@ -9,6 +9,10 @@ interface ProfileContextType {
   updateUser: (userId: string, updates: Partial<User>) => void;
   setAvailability: (userId: string, availableToday: boolean) => void;
   setRadius: (userId: string, radiusKm: number) => void;
+  getAllWorkerProfiles: () => WorkerProfile[];
+  isFollowing: (followerId: string, workerId: string) => boolean;
+  getFollowerCount: (workerId: string) => number;
+  toggleFollow: (followerId: string, workerId: string) => void;
 }
 
 const ProfileContext = createContext<ProfileContextType | undefined>(undefined);
@@ -44,6 +48,27 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
     setTrigger((v) => v + 1);
   }, []);
 
+  const getAllWorkerProfiles = useCallback(() => {
+    return repo.getWorkerProfiles();
+  }, []);
+
+  const isFollowing = useCallback((followerId: string, workerId: string) => {
+    return repo.isFollowing(followerId, workerId);
+  }, []);
+
+  const getFollowerCount = useCallback((workerId: string) => {
+    return repo.getFollowerCount(workerId);
+  }, []);
+
+  const toggleFollow = useCallback((followerId: string, workerId: string) => {
+    if (repo.isFollowing(followerId, workerId)) {
+      repo.unfollowWorker(followerId, workerId);
+    } else {
+      repo.followWorker(followerId, workerId);
+    }
+    setTrigger((v) => v + 1);
+  }, []);
+
   return (
     <ProfileContext.Provider
       value={{
@@ -53,6 +78,10 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
         updateUser,
         setAvailability,
         setRadius,
+        getAllWorkerProfiles,
+        isFollowing,
+        getFollowerCount,
+        toggleFollow,
       }}
     >
       {children}

@@ -11,6 +11,7 @@ import {
   DiaryEntry,
   Report,
   Block,
+  Follow,
 } from './types';
 
 // Raw seed imports for initial population only
@@ -23,6 +24,7 @@ import initialReviews from './mock/reviews.json';
 import initialDiaryEntries from './mock/diaryEntries.json';
 import initialReports from './mock/reports.json';
 import initialBlocks from './mock/blocks.json';
+import initialFollows from './mock/follows.json';
 
 // Safe localStorage helpers
 function safeGet<T>(key: string, defaultValue: T): T {
@@ -72,6 +74,9 @@ export function initializeRepository(): void {
   }
   if (!safeGet(LOCAL_STORAGE_KEYS.BLOCKS, null)) {
     safeSet(LOCAL_STORAGE_KEYS.BLOCKS, initialBlocks);
+  }
+  if (!safeGet(LOCAL_STORAGE_KEYS.FOLLOWS, null)) {
+    safeSet(LOCAL_STORAGE_KEYS.FOLLOWS, initialFollows);
   }
 }
 
@@ -496,4 +501,40 @@ export function isBlocked(userIdA: string, userIdB: string): boolean {
 
 export function hasBlocked(blockerId: string, blockedUserId: string): boolean {
   return getBlocks().some((b) => b.blockerId === blockerId && b.blockedUserId === blockedUserId);
+}
+
+// Follows — one-directional, employer (or anyone) following a worker's profile.
+export function getFollows(): Follow[] {
+  return safeGet<Follow[]>(LOCAL_STORAGE_KEYS.FOLLOWS, initialFollows as Follow[]);
+}
+
+export function isFollowing(followerId: string, followingId: string): boolean {
+  return getFollows().some((f) => f.followerId === followerId && f.followingId === followingId);
+}
+
+export function getFollowerCount(followingId: string): number {
+  return getFollows().filter((f) => f.followingId === followingId).length;
+}
+
+export function followWorker(followerId: string, followingId: string): Follow | undefined {
+  if (followerId === followingId) return undefined;
+  const follows = getFollows();
+  const existing = follows.find((f) => f.followerId === followerId && f.followingId === followingId);
+  if (existing) return existing;
+  const newFollow: Follow = {
+    id: `follow_${Date.now()}`,
+    followerId,
+    followingId,
+    createdAt: new Date().toISOString(),
+  };
+  follows.unshift(newFollow);
+  safeSet(LOCAL_STORAGE_KEYS.FOLLOWS, follows);
+  return newFollow;
+}
+
+export function unfollowWorker(followerId: string, followingId: string): void {
+  const follows = getFollows().filter(
+    (f) => !(f.followerId === followerId && f.followingId === followingId)
+  );
+  safeSet(LOCAL_STORAGE_KEYS.FOLLOWS, follows);
 }
