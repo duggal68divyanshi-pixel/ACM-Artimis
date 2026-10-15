@@ -13,6 +13,7 @@ import { BottomSheet } from '../../../design-system/components/BottomSheet';
 import { Button } from '../../../design-system/components/Button';
 import { Badge } from '../../../design-system/components/Badge';
 import { formatCurrency } from '../../../utils/currency';
+import { getJobDescription } from '../../../utils/localizedJob';
 import { isBlocked } from '../../../data/repository';
 import { Quote } from '../../../data/types';
 import {
@@ -27,7 +28,7 @@ import {
 
 export const JobQuotesList: React.FC = () => {
   const { jobId } = useParams<{ jobId: string }>();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { currentUserId } = useMockAuthSession();
   const { getJobById, refreshJobs } = useJobs();
   const { getQuotesForJob, declineQuote, refreshQuotes } = useQuotes();
@@ -143,7 +144,7 @@ export const JobQuotesList: React.FC = () => {
               Suggested: {formatCurrency(job.suggestedPrice)}
             </span>
           </div>
-          <h2 className="text-body-md font-bold text-on-surface line-clamp-2">{job.description}</h2>
+          <h2 className="text-body-md font-bold text-on-surface line-clamp-2">{getJobDescription(job, language)}</h2>
           <div className="flex items-center gap-2 mt-2">
             <Badge
               type={job.status === 'filled' ? 'confirmed' : 'pending'}

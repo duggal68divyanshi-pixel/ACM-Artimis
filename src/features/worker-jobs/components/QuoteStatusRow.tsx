@@ -5,6 +5,7 @@ import { formatTimeAgo } from '../../../utils/time';
 import { Badge } from '../../../design-system/components/Badge';
 import { Card } from '../../../design-system/components/Card';
 import { useLanguage } from '../../../i18n/LanguageContext';
+import { getJobDescription } from '../../../utils/localizedJob';
 import {
   MessageSquare,
   Lock,
@@ -33,7 +34,7 @@ export interface QuoteStatusRowProps {
 }
 
 export const QuoteStatusRow: React.FC<QuoteStatusRowProps> = ({ quote, job, onClick }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const getStatusBadge = () => {
     switch (quote.status) {
@@ -69,7 +70,7 @@ export const QuoteStatusRow: React.FC<QuoteStatusRowProps> = ({ quote, job, onCl
         </div>
 
         <h4 className="text-body-md font-bold text-on-surface truncate">
-          {job ? job.description : 'Job details'}
+          {job ? getJobDescription(job, language) : 'Job details'}
         </h4>
 
         <div className="flex items-center gap-2 mt-0.5">

@@ -11,10 +11,11 @@ import { Card } from '../../../design-system/components/Card';
 import { Badge } from '../../../design-system/components/Badge';
 import { formatCurrency } from '../../../utils/currency';
 import { formatTimeAgo } from '../../../utils/time';
+import { getJobDescription } from '../../../utils/localizedJob';
 import { MessageSquare, ChevronRight, Lock } from 'lucide-react';
 
 export const MessagesInboxScreen: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { currentUserId } = useMockAuthSession();
   const { threads } = useNegotiation();
   const { getJobById } = useJobs();
@@ -69,7 +70,7 @@ export const MessagesInboxScreen: React.FC = () => {
                     </div>
 
                     <p className="text-xs text-text-secondary truncate">
-                      Job: {job?.description || 'Service job'}
+                      Job: {job ? getJobDescription(job, language) : 'Service job'}
                     </p>
 
                     <div className="flex items-center justify-between mt-1 text-xs">

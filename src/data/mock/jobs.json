@@ -3,7 +3,6 @@
     "id": "job_1",
     "employerId": "emp_1",
     "trade": "plumber",
-    "videoUrl": "/videos/work-reel-1.mp4",
     "description": "Fix bathroom concealed pipe leakage and reinstall western commode with new gasket and seal.",
     "suggestedPrice": 650,
     "location": {
@@ -17,7 +16,13 @@
     "paymentTiming": "same_day",
     "status": "open",
     "createdAt": "2026-10-15T07:30:00.000Z",
-    "mediaType": "video"
+    "mediaType": "carousel",
+    "images": [
+      "/images/job-plumbing-1.jpeg",
+      "/images/job-plumbing-2.jpeg"
+    ],
+    "descriptionHi": "बाथरूम में छिपी हुई पाइप लीकेज ठीक करनी है और नए गैसकेट व सील के साथ वेस्टर्न कमोड फिर से लगाना है।",
+    "timeSlotHi": "सुबह (8 बजे - 12 बजे)"
   },
   {
     "id": "job_2",
@@ -38,10 +43,11 @@
     "createdAt": "2026-10-15T08:15:00.000Z",
     "mediaType": "carousel",
     "images": [
-      "before",
-      "closeup",
-      "tools"
-    ]
+      "/images/job-plumbing-1.jpeg",
+      "/images/job-plumbing-2.jpeg"
+    ],
+    "descriptionHi": "किचन सिंक का पाइप बुरी तरह जाम है और सिंक के नल को वॉल मिक्सर से बदलना है।",
+    "timeSlotHi": "दोपहर (12 बजे - 4 बजे)"
   },
   {
     "id": "job_3",
@@ -61,7 +67,9 @@
     "paymentTiming": "on_completion",
     "status": "open",
     "createdAt": "2026-10-15T06:45:00.000Z",
-    "mediaType": "video"
+    "mediaType": "video",
+    "descriptionHi": "फ्लैट के 2 कमरों में 3 सीलिंग फैन लगाने हैं और स्विचबोर्ड की वायरिंग करनी है।",
+    "timeSlotHi": "शाम (4 बजे - 8 बजे)"
   },
   {
     "id": "job_4",
@@ -81,7 +89,9 @@
     "paymentTiming": "same_day",
     "status": "open",
     "createdAt": "2026-10-15T09:00:00.000Z",
-    "mediaType": "video"
+    "mediaType": "video",
+    "descriptionHi": "मास्टर बेडरूम की अलमारी का स्लाइडिंग चैनल ठीक करना है और लॉक हैंडल बदलने हैं।",
+    "timeSlotHi": "2 घंटे के अंदर"
   },
   {
     "id": "job_5",
@@ -102,10 +112,10 @@
     "createdAt": "2026-10-14T15:20:00.000Z",
     "mediaType": "carousel",
     "images": [
-      "before",
-      "closeup",
-      "tools"
-    ]
+      "/images/job-paint-1.jpeg",
+      "/images/job-paint-2.jpeg"
+    ],
+    "descriptionHi": "बालकनी की दीवार की सीलन खुरचनी है, प्राइमर लगाना है, और 2 कोट वेदरप्रूफ बाहरी पेंट करना है।"
   },
   {
     "id": "job_6",
@@ -125,7 +135,8 @@
     "paymentTiming": "daily",
     "status": "open",
     "createdAt": "2026-10-14T11:00:00.000Z",
-    "mediaType": "video"
+    "mediaType": "video",
+    "descriptionHi": "बाउंड्री वॉल की ईंटों की दरारें ठीक करनी हैं और स्मूथ वाटरप्रूफ सीमेंट प्लास्टर करना है।"
   },
   {
     "id": "job_7",
@@ -144,7 +155,9 @@
     "paymentTiming": "same_day",
     "status": "filled",
     "createdAt": "2026-10-14T09:30:00.000Z",
-    "mediaType": "video"
+    "mediaType": "video",
+    "descriptionHi": "मेन डिस्ट्रीब्यूशन बोर्ड का MCB बार-बार ट्रिप हो रहा है, उसे ठीक करना है और AC कनेक्शन के लिए लोड बैलेंसिंग करनी है।",
+    "timeSlotHi": "सुबह (8 बजे - 12 बजे)"
   },
   {
     "id": "job_8",
@@ -165,9 +178,10 @@
     "createdAt": "2026-10-13T10:00:00.000Z",
     "mediaType": "carousel",
     "images": [
-      "before",
-      "closeup",
-      "tools"
-    ]
+      "/images/job-plumbing-2.jpeg",
+      "/images/job-plumbing-1.jpeg"
+    ],
+    "descriptionHi": "25 लीटर गीज़र लगाना है, इनलेट/आउटलेट ब्रेडेड कनेक्शन करना है, और पीतल का नॉन-रिटर्न वाल्व बदलना है।",
+    "timeSlotHi": "सुबह (8 बजे - 12 बजे)"
   }
 ]

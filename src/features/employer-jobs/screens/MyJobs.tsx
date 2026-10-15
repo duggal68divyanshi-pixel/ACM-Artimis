@@ -13,6 +13,7 @@ import { Badge } from '../../../design-system/components/Badge';
 import { Button } from '../../../design-system/components/Button';
 import { formatCurrency } from '../../../utils/currency';
 import { formatTimeAgo } from '../../../utils/time';
+import { getJobDescription } from '../../../utils/localizedJob';
 import { AVAILABLE_TRADES } from '../../../config/constants';
 import {
   Briefcase,
@@ -163,7 +164,7 @@ export const MyJobs: React.FC = () => {
                   </div>
 
                   <h3 className="text-body-lg font-bold text-on-surface line-clamp-2">
-                    {job.description}
+                    {getJobDescription(job, language)}
                   </h3>
 
                   <div className="flex items-center justify-between text-body-sm text-text-secondary pt-2 border-t border-border-subtle">

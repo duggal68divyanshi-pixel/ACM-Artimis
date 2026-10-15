@@ -54,8 +54,44 @@ export function initializeRepository(): void {
   if (!safeGet(LOCAL_STORAGE_KEYS.PROFILES, null)) {
     safeSet(LOCAL_STORAGE_KEYS.PROFILES, initialWorkerProfiles);
   }
-  if (!safeGet(LOCAL_STORAGE_KEYS.JOBS, null)) {
+  const storedJobs = safeGet<Job[] | null>(LOCAL_STORAGE_KEYS.JOBS, null);
+  if (!storedJobs || storedJobs.length === 0) {
     safeSet(LOCAL_STORAGE_KEYS.JOBS, initialJobs);
+  } else {
+    let needsSync = false;
+    const initialJobsMap = new Map((initialJobs as Job[]).map((j) => [j.id, j]));
+    const syncedJobs = storedJobs.map((j) => {
+      const init = initialJobsMap.get(j.id);
+      if (init) {
+        let changed = false;
+        const updated = { ...j };
+        if (init.descriptionHi !== j.descriptionHi || init.timeSlotHi !== j.timeSlotHi) {
+          updated.descriptionHi = init.descriptionHi;
+          updated.timeSlotHi = init.timeSlotHi;
+          changed = true;
+        }
+        if (init.mediaType !== j.mediaType) {
+          updated.mediaType = init.mediaType;
+          changed = true;
+        }
+        if (JSON.stringify(init.images) !== JSON.stringify(j.images)) {
+          updated.images = init.images;
+          changed = true;
+        }
+        if (init.videoUrl !== j.videoUrl) {
+          updated.videoUrl = init.videoUrl;
+          changed = true;
+        }
+        if (changed) {
+          needsSync = true;
+          return updated;
+        }
+      }
+      return j;
+    });
+    if (needsSync) {
+      safeSet(LOCAL_STORAGE_KEYS.JOBS, syncedJobs);
+    }
   }
   if (!safeGet(LOCAL_STORAGE_KEYS.QUOTES, null)) {
     safeSet(LOCAL_STORAGE_KEYS.QUOTES, initialQuotes);

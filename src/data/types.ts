@@ -65,6 +65,10 @@ export interface Job {
   videoUrl?: string;        // used when mediaType === 'video'
   images?: string[];        // used when mediaType === 'carousel' — short photo captions/seeds, 1-6
   description: string;
+  /** Hindi version of `description` — only set on seeded demo jobs, since a
+   *  freshly posted job's own free text can't be auto-translated without a
+   *  real translation service. Falls back to `description` when absent. */
+  descriptionHi?: string;
   suggestedPrice: number;   // anchor only, not binding
   location: {
     label: string;
@@ -75,6 +79,8 @@ export interface Job {
   urgency: 'today' | 'tomorrow' | 'scheduled';
   scheduledFor?: string;    // ISO date or slot if urgency === 'scheduled'
   timeSlot?: string;        // e.g. 'Morning (8 AM - 12 PM)'
+  /** Hindi version of `timeSlot`, same fallback rule as `descriptionHi`. */
+  timeSlotHi?: string;
   paymentTiming: 'same_day' | 'on_completion' | 'daily';
   /** Employer-set preference, shown as a badge and filterable in the feed —
    *  never used to hide the job from anyone, just to surface the preference. */

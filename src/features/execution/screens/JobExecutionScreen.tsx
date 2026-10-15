@@ -12,6 +12,7 @@ import { Button } from '../../../design-system/components/Button';
 import { Badge } from '../../../design-system/components/Badge';
 import { BottomSheet } from '../../../design-system/components/BottomSheet';
 import { formatCurrency } from '../../../utils/currency';
+import { getJobDescription } from '../../../utils/localizedJob';
 import {
   CheckCircle2,
   Clock,
@@ -30,7 +31,7 @@ import {
 
 export const JobExecutionScreen: React.FC = () => {
   const { jobId } = useParams<{ jobId: string }>();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { currentRole, currentUserId } = useMockAuthSession();
   const { getJobById, updateJobStatus, refreshJobs } = useJobs();
   const { getThreadByJobAndWorker } = useNegotiation();
@@ -110,7 +111,7 @@ export const JobExecutionScreen: React.FC = () => {
             <Badge type="confirmed" label={internalStatus.replace('_', ' ').toUpperCase()} />
           </div>
 
-          <h2 className="text-title-lg font-bold text-on-surface">{job.description}</h2>
+          <h2 className="text-title-lg font-bold text-on-surface">{getJobDescription(job, language)}</h2>
 
           <div className="flex items-center justify-between pt-2 border-t border-border-subtle text-body-sm text-text-secondary">
             <span className="flex items-center gap-1">

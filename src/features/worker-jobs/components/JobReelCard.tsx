@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Job } from '../../../data/types';
 import { formatCurrency } from '../../../utils/currency';
 import { formatDistance } from '../../../utils/distance';
+import { getJobDescription, getJobTimeSlot } from '../../../utils/localizedJob';
 import { useLanguage } from '../../../i18n/LanguageContext';
 import { Button } from '../../../design-system/components/Button';
 import { ReportBlockMenu } from '../../../design-system/components/ReportBlockMenu';
@@ -88,6 +89,36 @@ export const JobReelCard: React.FC<JobReelCardProps> = ({
   const images = job.images || [];
   const [photoIndex, setPhotoIndex] = useState(0);
   const safePhotoIndex = Math.min(photoIndex, Math.max(images.length - 1, 0));
+  const currentImageSrc = images[safePhotoIndex];
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
+
+  // Touch gesture support for horizontal swipe on carousel photos
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!isCarousel || images.length <= 1) return;
+    touchStartRef.current = {
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY,
+    };
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStartRef.current || !isCarousel || images.length <= 1) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartRef.current.x;
+    const deltaY = e.changedTouches[0].clientY - touchStartRef.current.y;
+    touchStartRef.current = null;
+    // Dominant horizontal swipe with threshold
+    if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.3) {
+      if (deltaX < 0) {
+        // Swiped left -> next photo
+        setPhotoIndex((prev) => (prev + 1) % images.length);
+      } else {
+        // Swiped right -> prev photo
+        setPhotoIndex((prev) => (prev - 1 + images.length) % images.length);
+      }
+    }
+  };
 
   // A real local video file beats the gradient placeholder whenever one is set.
   const hasRealVideo = job.mediaType === 'video' && !!job.videoUrl;
@@ -139,17 +170,29 @@ export const JobReelCard: React.FC<JobReelCardProps> = ({
 
   const urgencyLabel =
     job.urgency === 'today'
-      ? `${t('common.today')}${job.timeSlot ? ` • ${job.timeSlot}` : ''}`
+      ? `${t('common.today')}${getJobTimeSlot(job, language) ? ` • ${getJobTimeSlot(job, language)}` : ''}`
       : job.urgency === 'tomorrow'
-      ? `${t('common.tomorrow')}${job.timeSlot ? ` • ${job.timeSlot}` : ''}`
+      ? `${t('common.tomorrow')}${getJobTimeSlot(job, language) ? ` • ${getJobTimeSlot(job, language)}` : ''}`
       : `${t('common.scheduled')} (${job.scheduledFor || ''})`;
 
   const gradient = TRADE_GRADIENTS[job.trade] || TRADE_GRADIENTS.labourer;
 
+  // Check if current photo is a real image URL / path and not marked as failed
+  const isImageValid =
+    isCarousel &&
+    Boolean(currentImageSrc) &&
+    (currentImageSrc.startsWith('/') ||
+      currentImageSrc.startsWith('http') ||
+      currentImageSrc.startsWith('data:')) &&
+    !failedImages[currentImageSrc];
+
   return (
-    <div className="relative w-full h-full bg-[#111B21] text-white flex flex-col overflow-hidden select-none">
-      {/* Backdrop — a real local video when the job has one, otherwise the
-          network-free trade gradient so the card is never a blank black frame. */}
+    <div
+      className="relative w-full h-full bg-[#111B21] text-white flex flex-col overflow-hidden select-none"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Backdrop — real video, real carousel photo, or trade gradient */}
       {hasRealVideo && !videoFailed ? (
         <div className="absolute inset-0 z-0 bg-[#111B21]">
           <video
@@ -164,6 +207,22 @@ export const JobReelCard: React.FC<JobReelCardProps> = ({
             onError={() => setVideoFailed(true)}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#111B21]/70 via-transparent to-[#111B21]/95" />
+        </div>
+      ) : isImageValid ? (
+        <div className="absolute inset-0 z-0 bg-[#111B21]" key={`photo-${safePhotoIndex}`}>
+          <img
+            src={currentImageSrc}
+            alt={`${tradeLabel} - ${safePhotoIndex + 1}`}
+            className="w-full h-full object-cover select-none"
+            loading="eager"
+            onError={() => {
+              if (currentImageSrc) {
+                setFailedImages((prev) => ({ ...prev, [currentImageSrc]: true }));
+              }
+            }}
+          />
+          {/* Subtle dark gradient scrim so overlaid top/bottom text stays crisp and readable */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#111B21]/65 via-transparent to-[#111B21]/95" />
         </div>
       ) : (
         <div
@@ -184,25 +243,24 @@ export const JobReelCard: React.FC<JobReelCardProps> = ({
         </div>
       )}
 
-      {/* Carousel side tap targets — absolutely centered on the edges only, so they
-          never compete with the top-stack's vertical space below. */}
+      {/* Carousel side tap targets — 48x48px min touch target */}
       {isCarousel && images.length > 1 && (
         <>
           <button
             type="button"
             onClick={(e) => goToPhoto(e, -1)}
             aria-label={t('workerJobs.previousPhoto')}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white active:scale-90"
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/55 hover:bg-black/75 active:scale-90 backdrop-blur-md border border-white/25 flex items-center justify-center text-white shadow-xl transition-transform"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             type="button"
             onClick={(e) => goToPhoto(e, 1)}
             aria-label={t('workerJobs.nextPhoto')}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white active:scale-90"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/55 hover:bg-black/75 active:scale-90 backdrop-blur-md border border-white/25 flex items-center justify-center text-white shadow-xl transition-transform"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-6 h-6" />
           </button>
         </>
       )}
@@ -257,12 +315,18 @@ export const JobReelCard: React.FC<JobReelCardProps> = ({
         {/* Carousel position dots — second row of the same in-flow stack, so it
             always sits directly under the badges, never on top of them. */}
         {isCarousel && images.length > 1 && (
-          <div className="flex items-center justify-center gap-1.5">
+          <div className="flex items-center justify-center gap-1.5 py-0.5">
             {images.map((_, i) => (
-              <span
+              <button
                 key={i}
-                className={`h-1.5 rounded-pill transition-all ${
-                  i === safePhotoIndex ? 'w-5 bg-accent' : 'w-1.5 bg-white/40'
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setPhotoIndex(i);
+                }}
+                aria-label={t('workerJobs.photoCount', { current: i + 1, total: images.length })}
+                className={`h-2 rounded-pill transition-all cursor-pointer ${
+                  i === safePhotoIndex ? 'w-6 bg-accent' : 'w-2 bg-white/40 hover:bg-white/60'
                 }`}
               />
             ))}
@@ -296,7 +360,7 @@ export const JobReelCard: React.FC<JobReelCardProps> = ({
             <span className="text-body-sm text-white/80">({t('workerJobs.anchorNote')})</span>
           </div>
 
-          <p className="text-body-lg font-semibold text-white line-clamp-2">{job.description}</p>
+          <p className="text-body-lg font-semibold text-white line-clamp-2">{getJobDescription(job, language)}</p>
 
           <div className="flex items-center gap-2 flex-wrap text-body-sm text-white/90">
             <span className="inline-flex items-center gap-1">

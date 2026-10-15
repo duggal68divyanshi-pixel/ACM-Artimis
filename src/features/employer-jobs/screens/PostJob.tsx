@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useJobs } from '../../worker-jobs/state/JobsContext';
 import { useMockAuthSession } from '../../../hooks/useMockAuthSession';
@@ -50,17 +50,28 @@ const TRADE_ICONS: Record<string, React.ReactNode> = {
   labourer: <HardHat className="w-5 h-5" />,
 };
 
+const AVAILABLE_PHOTO_PRESETS = [
+  '/images/job-plumbing-1.jpeg',
+  '/images/job-plumbing-2.jpeg',
+  '/images/job-paint-1.jpeg',
+  '/images/job-paint-2.jpeg',
+];
+
 export const PostJob: React.FC = () => {
   const { t, language } = useLanguage();
   const { currentUserId } = useMockAuthSession();
   const { postJob } = useJobs();
   const navigate = useNavigate();
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Form states
   const [mediaType, setMediaType] = useState<'video' | 'carousel'>('video');
   const [hasVideo, setHasVideo] = useState(true);
   const MAX_PHOTOS = 6;
-  const [photos, setPhotos] = useState<string[]>(['before', 'closeup']);
+  const [photos, setPhotos] = useState<string[]>([
+    '/images/job-plumbing-1.jpeg',
+    '/images/job-plumbing-2.jpeg',
+  ]);
   const [selectedTrade, setSelectedTrade] = useState('plumber');
   const [description, setDescription] = useState(
     'Bathroom pipe joint leaking behind tiles. Need quick inspection and repair.'
@@ -218,19 +229,45 @@ export const PostJob: React.FC = () => {
               </div>
             ) : (
               <div className="flex flex-col gap-2">
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (!file) return;
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                      const dataUrl = event.target?.result as string;
+                      if (dataUrl) {
+                        setPhotos((prev) => [...prev, dataUrl]);
+                        setMediaError(null);
+                      }
+                    };
+                    reader.readAsDataURL(file);
+                    e.target.value = '';
+                  }}
+                />
                 <div className="grid grid-cols-3 gap-2">
                   {photos.map((photo, i) => (
                     <div
                       key={`${photo}-${i}`}
-                      className="relative aspect-square rounded-card bg-secondary/10 border-[1.5px] border-secondary/30 flex flex-col items-center justify-center gap-1 text-secondary"
+                      className="relative aspect-square rounded-card bg-secondary/10 border-[1.5px] border-secondary/30 overflow-hidden flex flex-col items-center justify-center gap-1 text-secondary"
                     >
-                      <Images className="w-6 h-6" />
-                      <span className="text-[11px] font-bold">{i + 1}</span>
+                      {photo.startsWith('/') || photo.startsWith('data:') || photo.startsWith('http') ? (
+                        <img src={photo} alt="" className="w-full h-full object-cover" />
+                      ) : (
+                        <>
+                          <Images className="w-6 h-6" />
+                          <span className="text-[11px] font-bold">{i + 1}</span>
+                        </>
+                      )}
                       <button
                         type="button"
                         onClick={() => setPhotos((prev) => prev.filter((_, idx) => idx !== i))}
                         aria-label={t('employerJobs.removePhoto')}
-                        className="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-danger text-white flex items-center justify-center shadow-md active:scale-90"
+                        className="absolute top-1 right-1 w-6 h-6 rounded-full bg-danger text-white flex items-center justify-center shadow-md active:scale-90"
                       >
                         <X className="w-3.5 h-3.5" />
                       </button>
@@ -240,8 +277,13 @@ export const PostJob: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => {
-                        setPhotos((prev) => [...prev, `photo-${prev.length + 1}`]);
-                        setMediaError(null);
+                        const nextPreset = AVAILABLE_PHOTO_PRESETS.find((p) => !photos.includes(p));
+                        if (nextPreset) {
+                          setPhotos((prev) => [...prev, nextPreset]);
+                          setMediaError(null);
+                        } else {
+                          fileInputRef.current?.click();
+                        }
                       }}
                       className="aspect-square rounded-card border-2 border-dashed border-secondary/50 bg-secondary/5 flex flex-col items-center justify-center gap-1 text-secondary hover:bg-secondary/10 active:scale-[0.98]"
                     >

@@ -9,11 +9,12 @@ import { BottomNav } from '../../../design-system/components/BottomNav';
 import { Button } from '../../../design-system/components/Button';
 import { VoiceButton } from '../../../design-system/components/VoiceButton';
 import { submitReview } from '../../../data/repository';
+import { getJobDescription } from '../../../utils/localizedJob';
 import { CheckCircle2, Camera, Clock, Check, Frown, Meh, Smile } from 'lucide-react';
 
 export const RateJobScreen: React.FC = () => {
   const { jobId } = useParams<{ jobId: string }>();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { currentRole, currentUserId } = useMockAuthSession();
   const { getJobById } = useJobs();
   const navigate = useNavigate();
@@ -77,7 +78,7 @@ export const RateJobScreen: React.FC = () => {
                 {currentRole === 'worker' ? t('rating.workerPrompt') : t('rating.employerPrompt')}
               </h1>
               <p className="text-body-sm text-text-secondary mt-1">
-                {job?.description || 'Service job completed'}
+                {job ? getJobDescription(job, language) : 'Service job completed'}
               </p>
             </div>
 
