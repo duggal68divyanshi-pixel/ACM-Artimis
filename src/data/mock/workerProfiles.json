@@ -1,0 +1,109 @@
+[
+  {
+    "userId": "worker_1",
+    "trade": "plumber",
+    "experienceYears": 8,
+    "introVideoUrl": "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=400&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "jobsCompleted": 142,
+    "radiusKm": 10,
+    "availableToday": true,
+    "portfolioReels": [
+      {
+        "id": "reel_w1_1",
+        "videoUrl": "",
+        "thumbUrl": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=400&auto=format&fit=crop&q=80",
+        "caption": "Jaguar diverter and concealed valve replacement"
+      },
+      {
+        "id": "reel_w1_2",
+        "videoUrl": "",
+        "thumbUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&auto=format&fit=crop&q=80",
+        "caption": "Overhead water tank pipeline laying"
+      }
+    ]
+  },
+  {
+    "userId": "worker_2",
+    "trade": "electrician",
+    "experienceYears": 6,
+    "introVideoUrl": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&auto=format&fit=crop&q=80",
+    "rating": 4.8,
+    "jobsCompleted": 98,
+    "radiusKm": 15,
+    "availableToday": true,
+    "portfolioReels": [
+      {
+        "id": "reel_w2_1",
+        "videoUrl": "",
+        "thumbUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&auto=format&fit=crop&q=80",
+        "caption": "Schneider 3-phase DB dressing and earthing test"
+      }
+    ]
+  },
+  {
+    "userId": "worker_3",
+    "trade": "carpenter",
+    "experienceYears": 11,
+    "introVideoUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "jobsCompleted": 210,
+    "radiusKm": 12,
+    "availableToday": false,
+    "portfolioReels": [
+      {
+        "id": "reel_w3_1",
+        "videoUrl": "",
+        "thumbUrl": "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=400&auto=format&fit=crop&q=80",
+        "caption": "Modular kitchen hydraulic hinge alignment"
+      }
+    ]
+  },
+  {
+    "userId": "worker_4",
+    "trade": "mason",
+    "experienceYears": 9,
+    "introVideoUrl": "https://images.unsplash.com/photo-1541888946425-d0fbb186f5f7?w=400&auto=format&fit=crop&q=80",
+    "rating": 4.7,
+    "jobsCompleted": 85,
+    "radiusKm": 20,
+    "availableToday": true,
+    "portfolioReels": [
+      {
+        "id": "reel_w4_1",
+        "videoUrl": "",
+        "thumbUrl": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&auto=format&fit=crop&q=80",
+        "caption": "Interlocking paver blocks and plastering finish"
+      }
+    ]
+  },
+  {
+    "userId": "worker_5",
+    "trade": "painter",
+    "experienceYears": 5,
+    "introVideoUrl": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=400&auto=format&fit=crop&q=80",
+    "rating": 4.6,
+    "jobsCompleted": 64,
+    "radiusKm": 10,
+    "availableToday": true,
+    "portfolioReels": [
+      {
+        "id": "reel_w5_1",
+        "videoUrl": "",
+        "thumbUrl": "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&auto=format&fit=crop&q=80",
+        "caption": "Royale luxury emulsion wall texture and damp check"
+      }
+    ]
+  },
+  {
+    "userId": "worker_6",
+    "trade": "labourer",
+    "experienceYears": 4,
+    "introVideoUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&auto=format&fit=crop&q=80",
+    "rating": 4.8,
+    "jobsCompleted": 120,
+    "radiusKm": 8,
+    "availableToday": true,
+    "portfolioReels": []
+  }
+]

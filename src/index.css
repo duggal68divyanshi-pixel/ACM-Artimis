@@ -1,0 +1,33 @@
+@import './design-system/tokens.css';
+
+/* Mobile-first layout container and reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #F0F2F5;
+  color: #111B21;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background-color: #E2E5E9;
+}
+
+/* Scrollbar styling for smooth mobile feel */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(18, 140, 126, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}

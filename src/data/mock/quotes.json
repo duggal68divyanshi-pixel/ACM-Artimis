@@ -1,0 +1,75 @@
+[
+  {
+    "id": "quote_1",
+    "jobId": "job_1",
+    "workerId": "worker_1",
+    "quotedPrice": 600,
+    "voiceNoteUrl": "mock://voicenote-quote1.mp3",
+    "status": "negotiating",
+    "createdAt": "2026-10-15T08:00:00.000Z"
+  },
+  {
+    "id": "quote_2",
+    "jobId": "job_1",
+    "workerId": "worker_4",
+    "quotedPrice": 750,
+    "status": "pending",
+    "createdAt": "2026-10-15T08:10:00.000Z"
+  },
+  {
+    "id": "quote_3",
+    "jobId": "job_1",
+    "workerId": "worker_6",
+    "quotedPrice": 500,
+    "status": "pending",
+    "createdAt": "2026-10-15T08:30:00.000Z"
+  },
+  {
+    "id": "quote_4",
+    "jobId": "job_2",
+    "workerId": "worker_1",
+    "quotedPrice": 450,
+    "status": "pending",
+    "createdAt": "2026-10-15T08:45:00.000Z"
+  },
+  {
+    "id": "quote_5",
+    "jobId": "job_3",
+    "workerId": "worker_2",
+    "quotedPrice": 850,
+    "status": "pending",
+    "createdAt": "2026-10-15T07:15:00.000Z"
+  },
+  {
+    "id": "quote_6",
+    "jobId": "job_3",
+    "workerId": "worker_5",
+    "quotedPrice": 900,
+    "status": "pending",
+    "createdAt": "2026-10-15T07:40:00.000Z"
+  },
+  {
+    "id": "quote_7",
+    "jobId": "job_7",
+    "workerId": "worker_2",
+    "quotedPrice": 750,
+    "status": "accepted",
+    "createdAt": "2026-10-14T10:10:00.000Z"
+  },
+  {
+    "id": "quote_8",
+    "jobId": "job_7",
+    "workerId": "worker_1",
+    "quotedPrice": 850,
+    "status": "declined",
+    "createdAt": "2026-10-14T10:25:00.000Z"
+  },
+  {
+    "id": "quote_9",
+    "jobId": "job_8",
+    "workerId": "worker_1",
+    "quotedPrice": 500,
+    "status": "accepted",
+    "createdAt": "2026-10-13T10:30:00.000Z"
+  }
+]

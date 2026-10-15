@@ -1,0 +1,42 @@
+[
+  {
+    "id": "diary_1",
+    "workerId": "worker_1",
+    "jobId": "job_8",
+    "jobTitle": "25L geyser installation & brass valve",
+    "amount": 500,
+    "paid": true,
+    "paymentMethod": "upi",
+    "date": "2026-10-13"
+  },
+  {
+    "id": "diary_2",
+    "workerId": "worker_1",
+    "jobId": "past_job_101",
+    "jobTitle": "Bathroom tile grouting & sealant repair",
+    "amount": 650,
+    "paid": false,
+    "paymentMethod": "cash",
+    "date": "2026-10-11"
+  },
+  {
+    "id": "diary_3",
+    "workerId": "worker_1",
+    "jobId": "past_job_102",
+    "jobTitle": "Concealed pipe leak joint welding",
+    "amount": 800,
+    "paid": true,
+    "paymentMethod": "upi",
+    "date": "2026-10-09"
+  },
+  {
+    "id": "diary_4",
+    "workerId": "worker_1",
+    "jobId": "past_job_103",
+    "jobTitle": "Kitchen dual faucet replace & drain clean",
+    "amount": 400,
+    "paid": true,
+    "paymentMethod": "cash",
+    "date": "2026-10-07"
+  }
+]

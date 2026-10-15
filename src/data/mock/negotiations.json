@@ -1,0 +1,109 @@
+[
+  {
+    "id": "thread_1",
+    "jobId": "job_1",
+    "workerId": "worker_1",
+    "employerId": "emp_1",
+    "currentOfferAmount": 580,
+    "locked": false,
+    "messages": [
+      {
+        "id": "msg_1_1",
+        "threadId": "thread_1",
+        "sender": "worker",
+        "type": "offer",
+        "offerAmount": 600,
+        "text": "Namaste sir, I can reach by 10 AM. Will bring all tools, Teflon and gasket.",
+        "createdAt": "2026-10-15T08:02:00.000Z"
+      },
+      {
+        "id": "msg_1_2",
+        "threadId": "thread_1",
+        "sender": "employer",
+        "type": "offer",
+        "offerAmount": 550,
+        "text": "Can you do it for ₹550? Need it done carefully with no tile damage.",
+        "createdAt": "2026-10-15T08:15:00.000Z"
+      },
+      {
+        "id": "msg_1_3",
+        "threadId": "thread_1",
+        "sender": "worker",
+        "type": "voice",
+        "voiceUrl": "mock://voice-msg3.mp3",
+        "text": "Sir, I have 8 yrs experience, commode sealing will take time. Let's settle at ₹580.",
+        "createdAt": "2026-10-15T08:20:00.000Z"
+      },
+      {
+        "id": "msg_1_4",
+        "threadId": "thread_1",
+        "sender": "worker",
+        "type": "offer",
+        "offerAmount": 580,
+        "text": "Counter offer ₹580",
+        "createdAt": "2026-10-15T08:21:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "thread_2",
+    "jobId": "job_7",
+    "workerId": "worker_2",
+    "employerId": "emp_2",
+    "currentOfferAmount": 750,
+    "locked": true,
+    "lockedTerms": {
+      "price": 750,
+      "time": "Tomorrow 10:00 AM",
+      "paymentMethod": "same_day"
+    },
+    "messages": [
+      {
+        "id": "msg_2_1",
+        "threadId": "thread_2",
+        "sender": "worker",
+        "type": "offer",
+        "offerAmount": 750,
+        "text": "I have 3-phase DB testers. I can balance MCB load properly.",
+        "createdAt": "2026-10-14T10:12:00.000Z"
+      },
+      {
+        "id": "msg_2_2",
+        "threadId": "thread_2",
+        "sender": "employer",
+        "type": "offer",
+        "offerAmount": 750,
+        "text": "Sounds fair Suresh ji. Confirmed for tomorrow 10 AM.",
+        "createdAt": "2026-10-14T10:30:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "thread_3",
+    "jobId": "job_3",
+    "workerId": "worker_2",
+    "employerId": "emp_2",
+    "currentOfferAmount": 800,
+    "locked": false,
+    "messages": [
+      {
+        "id": "msg_3_1",
+        "threadId": "thread_3",
+        "sender": "worker",
+        "type": "offer",
+        "offerAmount": 850,
+        "text": "Can install all 3 fans with regulator check.",
+        "createdAt": "2026-10-15T07:20:00.000Z"
+      },
+      {
+        "id": "msg_3_2",
+        "threadId": "thread_3",
+        "sender": "employer",
+        "type": "offer",
+        "offerAmount": 800,
+        "text": "Budget is ₹800 max. Can you come around 5 PM?",
+        "createdAt": "2026-10-15T07:45:00.000Z"
+      }
+    ]
+  }
+]

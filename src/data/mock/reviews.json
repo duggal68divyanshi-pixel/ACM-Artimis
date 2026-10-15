@@ -1,0 +1,23 @@
+[
+  {
+    "id": "rev_1",
+    "jobId": "job_8",
+    "fromUserId": "emp_1",
+    "toUserId": "worker_1",
+    "rating": 3,
+    "mediaUrl": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=400&auto=format&fit=crop&q=80",
+    "note": "Ramesh ji arrived right on time. Geyser was installed cleanly without any leakage. Highly skilled plumber.",
+    "paidOnTime": true,
+    "createdAt": "2026-10-13T14:30:00.000Z"
+  },
+  {
+    "id": "rev_2",
+    "jobId": "job_8",
+    "fromUserId": "worker_1",
+    "toUserId": "emp_1",
+    "rating": 3,
+    "note": "Payment done immediately after testing geyser. Very respectful employer.",
+    "paidOnTime": true,
+    "createdAt": "2026-10-13T14:40:00.000Z"
+  }
+]

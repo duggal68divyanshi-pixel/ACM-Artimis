@@ -1,0 +1,174 @@
+[
+  {
+    "id": "job_1",
+    "employerId": "emp_1",
+    "trade": "plumber",
+    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-water-flowing-from-a-leaking-pipe-42358-large.mp4",
+    "description": "Fix bathroom concealed pipe leakage and reinstall western commode with new gasket and seal.",
+    "suggestedPrice": 650,
+    "location": {
+      "label": "Greater Kailash 1, New Delhi",
+      "lat": 28.5524,
+      "lng": 77.2372,
+      "distanceKmFromViewer": 1.8
+    },
+    "urgency": "today",
+    "timeSlot": "Morning (8 AM - 12 PM)",
+    "paymentTiming": "same_day",
+    "status": "open",
+    "createdAt": "2026-10-15T07:30:00.000Z",
+    "mediaType": "video"
+  },
+  {
+    "id": "job_2",
+    "employerId": "emp_1",
+    "trade": "plumber",
+    "description": "Kitchen sink heavy drain blockage & replace kitchen sink tap with wall mixer.",
+    "suggestedPrice": 450,
+    "location": {
+      "label": "Kailash Colony, New Delhi",
+      "lat": 28.5544,
+      "lng": 77.2412,
+      "distanceKmFromViewer": 2.4
+    },
+    "urgency": "tomorrow",
+    "timeSlot": "Afternoon (12 PM - 4 PM)",
+    "paymentTiming": "same_day",
+    "status": "open",
+    "createdAt": "2026-10-15T08:15:00.000Z",
+    "mediaType": "carousel",
+    "images": [
+      "before",
+      "closeup",
+      "tools"
+    ]
+  },
+  {
+    "id": "job_3",
+    "employerId": "emp_2",
+    "trade": "electrician",
+    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-electrician-fixing-wires-in-a-breaker-box-42360-large.mp4",
+    "description": "3 ceiling fans installation & switchboard wiring in 2 rooms of flat.",
+    "suggestedPrice": 800,
+    "location": {
+      "label": "Sector 62, Noida",
+      "lat": 28.6256,
+      "lng": 77.3649,
+      "distanceKmFromViewer": 4.1
+    },
+    "urgency": "today",
+    "timeSlot": "Evening (4 PM - 8 PM)",
+    "paymentTiming": "on_completion",
+    "status": "open",
+    "createdAt": "2026-10-15T06:45:00.000Z",
+    "mediaType": "video"
+  },
+  {
+    "id": "job_4",
+    "employerId": "emp_3",
+    "trade": "carpenter",
+    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-carpenter-measuring-wood-plank-42361-large.mp4",
+    "description": "Fix master bedroom wardrobe sliding channel and replace lock handles.",
+    "suggestedPrice": 550,
+    "location": {
+      "label": "DLF Phase 4, Gurugram",
+      "lat": 28.4682,
+      "lng": 77.0864,
+      "distanceKmFromViewer": 6.3
+    },
+    "urgency": "today",
+    "timeSlot": "Within 2 hours",
+    "paymentTiming": "same_day",
+    "status": "open",
+    "createdAt": "2026-10-15T09:00:00.000Z",
+    "mediaType": "video"
+  },
+  {
+    "id": "job_5",
+    "employerId": "emp_3",
+    "trade": "painter",
+    "description": "Balcony wall dampness scraping, primer coat, and 2 coats exterior weather-proof paint.",
+    "suggestedPrice": 1200,
+    "location": {
+      "label": "Golf Course Road, Gurugram",
+      "lat": 28.4595,
+      "lng": 77.0988,
+      "distanceKmFromViewer": 7.5
+    },
+    "urgency": "scheduled",
+    "scheduledFor": "2026-10-18",
+    "paymentTiming": "daily",
+    "status": "open",
+    "createdAt": "2026-10-14T15:20:00.000Z",
+    "mediaType": "carousel",
+    "images": [
+      "before",
+      "closeup",
+      "tools"
+    ]
+  },
+  {
+    "id": "job_6",
+    "employerId": "emp_2",
+    "trade": "mason",
+    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-construction-worker-laying-bricks-with-cement-42363-large.mp4",
+    "description": "Repair boundary wall brickwork cracks and apply smooth waterproof cement plaster.",
+    "suggestedPrice": 1500,
+    "location": {
+      "label": "Sector 18, Noida",
+      "lat": 28.5708,
+      "lng": 77.3261,
+      "distanceKmFromViewer": 5.8
+    },
+    "urgency": "scheduled",
+    "scheduledFor": "2026-10-19",
+    "paymentTiming": "daily",
+    "status": "open",
+    "createdAt": "2026-10-14T11:00:00.000Z",
+    "mediaType": "video"
+  },
+  {
+    "id": "job_7",
+    "employerId": "emp_2",
+    "trade": "electrician",
+    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-electrician-fixing-wires-in-a-breaker-box-42360-large.mp4",
+    "description": "Main distribution board MCB tripping fix and load balancing for AC connection.",
+    "suggestedPrice": 700,
+    "location": {
+      "label": "Sector 50, Noida",
+      "lat": 28.5752,
+      "lng": 77.367,
+      "distanceKmFromViewer": 4.9
+    },
+    "urgency": "tomorrow",
+    "timeSlot": "Morning (8 AM - 12 PM)",
+    "paymentTiming": "same_day",
+    "status": "filled",
+    "createdAt": "2026-10-14T09:30:00.000Z",
+    "mediaType": "video"
+  },
+  {
+    "id": "job_8",
+    "employerId": "emp_1",
+    "trade": "plumber",
+    "description": "25L geyser mounting, inlet/outlet braided connection and brass non-return valve replacement.",
+    "suggestedPrice": 500,
+    "location": {
+      "label": "Lajpat Nagar 3, New Delhi",
+      "lat": 28.5677,
+      "lng": 77.2433,
+      "distanceKmFromViewer": 0.8
+    },
+    "urgency": "today",
+    "timeSlot": "Morning (8 AM - 12 PM)",
+    "paymentTiming": "same_day",
+    "status": "completed",
+    "createdAt": "2026-10-13T10:00:00.000Z",
+    "mediaType": "carousel",
+    "images": [
+      "before",
+      "closeup",
+      "tools"
+    ]
+  }
+]

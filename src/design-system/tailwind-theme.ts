@@ -1,0 +1,58 @@
+export const tailwindThemeExtension = {
+  colors: {
+    primary: 'var(--color-primary, #075E54)',
+    secondary: 'var(--color-secondary, #128C7E)',
+    accent: 'var(--color-accent, #25D366)',
+    'on-surface': 'var(--color-on-surface, #111B21)',
+    'text-secondary': 'var(--color-text-secondary, #54656F)',
+    'surface-canvas': 'var(--color-surface-canvas, #F0F2F5)',
+    'surface-card': 'var(--color-surface-card, #FFFFFF)',
+    'border-subtle': 'var(--color-border-subtle, #E2E5E9)',
+    'border-strong': 'var(--color-border-strong, #8696A0)',
+    'trust-amber': 'var(--color-trust-amber, #FFA000)',
+    success: 'var(--color-success, #00A884)',
+    danger: 'var(--color-danger, #EA0038)',
+    'badge-verified': {
+      bg: 'var(--badge-verified-bg, rgba(18, 140, 126, 0.1))',
+      text: 'var(--badge-verified-text, #075E54)',
+    },
+    'badge-certified': {
+      bg: 'var(--badge-certified-bg, rgba(255, 160, 0, 0.12))',
+      text: 'var(--badge-certified-text, #B87400)',
+    },
+  },
+  spacing: {
+    '2xs': 'var(--spacing-2xs, 4px)',
+    'xs': 'var(--spacing-xs, 8px)',
+    'sm': 'var(--spacing-sm, 12px)',
+    'md': 'var(--spacing-md, 16px)',
+    'lg': 'var(--spacing-lg, 24px)',
+    'xl': 'var(--spacing-xl, 32px)',
+    '2xl': 'var(--spacing-2xl, 48px)',
+  },
+  borderRadius: {
+    card: 'var(--radius-card, 16px)',
+    button: 'var(--radius-button, 14px)',
+    pill: 'var(--radius-pill, 9999px)',
+  },
+  boxShadow: {
+    'tier-1': 'var(--shadow-tier-1, 0 1px 3px rgba(17, 27, 33, 0.08))',
+    'tier-2': 'var(--shadow-tier-2, 0 4px 12px rgba(7, 94, 84, 0.12), 0 1px 2px rgba(17, 27, 33, 0.04))',
+    'tier-3': 'var(--shadow-tier-3, 0 -4px 20px rgba(17, 27, 33, 0.16))',
+  },
+  fontFamily: {
+    sans: ['var(--font-family)', "'Plus Jakarta Sans'", "'Noto Sans Devanagari'", 'sans-serif'],
+  },
+  fontSize: {
+    'headline-lg': ['28px', { lineHeight: '34px', fontWeight: '800' }],
+    'headline-md': ['22px', { lineHeight: '28px', fontWeight: '700' }],
+    'headline-sm': ['18px', { lineHeight: '24px', fontWeight: '700' }],
+    'title-lg': ['16px', { lineHeight: '22px', fontWeight: '700' }],
+    'title-md': ['15px', { lineHeight: '20px', fontWeight: '600' }],
+    'body-lg': ['16px', { lineHeight: '22px', fontWeight: '500' }],
+    'body-md': ['14px', { lineHeight: '20px', fontWeight: '500' }],
+    'body-sm': ['12px', { lineHeight: '16px', fontWeight: '500' }],
+    'label-lg': ['14px', { lineHeight: '18px', fontWeight: '700' }],
+    'label-md': ['12px', { lineHeight: '16px', fontWeight: '600' }],
+  },
+};
