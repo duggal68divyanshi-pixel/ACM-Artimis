@@ -26,6 +26,7 @@ import {
   ChevronsDown,
   Volume2,
   VolumeX,
+  UserRound,
 } from 'lucide-react';
 
 const TRADE_ICONS: Record<string, React.ReactNode> = {
@@ -291,6 +292,13 @@ export const JobReelCard: React.FC<JobReelCardProps> = ({
             <ShieldCheck className="w-4 h-4 text-accent" />
             <span>{t('common.noAdvanceNeeded')}</span>
           </div>
+
+          {job.preferWomanWorker && (
+            <span className="inline-flex items-center gap-1.5 w-fit px-2.5 py-1 rounded-pill bg-[#4B1528]/60 text-[#F4C0D1] text-[11px] font-bold border border-[#D4537E]/40">
+              <UserRound className="w-3.5 h-3.5" />
+              {t('workerJobs.womanPreferred')}
+            </span>
+          )}
         </div>
 
         {/* Two big bottom action buttons — always directly below the info block, never floating separately */}

@@ -21,6 +21,13 @@ export interface WorkerProfile {
   jobsCompleted: number;
   radiusKm: number;         // worker-set, from onboarding / editable in profile
   availableToday: boolean;
+  // Women's safety — both optional, self-disclosed, editable any time from the
+  // profile. isWoman unlocks safetyMode; safetyMode unlocks the emergency
+  // contact + live-location-share affordance during a job.
+  isWoman?: boolean;
+  safetyMode?: boolean;
+  emergencyContactName?: string;
+  emergencyContactPhone?: string;
   portfolioReels: {
     id: string;
     videoUrl: string;
@@ -69,6 +76,9 @@ export interface Job {
   scheduledFor?: string;    // ISO date or slot if urgency === 'scheduled'
   timeSlot?: string;        // e.g. 'Morning (8 AM - 12 PM)'
   paymentTiming: 'same_day' | 'on_completion' | 'daily';
+  /** Employer-set preference, shown as a badge and filterable in the feed —
+   *  never used to hide the job from anyone, just to surface the preference. */
+  preferWomanWorker?: boolean;
   status: 'open' | 'filled' | 'completed' | 'cancelled';
   createdAt: string;
 }

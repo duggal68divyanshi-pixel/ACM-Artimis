@@ -15,6 +15,7 @@ import {
   Navigation,
   Crosshair,
   TrendingUp,
+  UserRound,
 } from 'lucide-react';
 
 export const ChowkMapScreen: React.FC = () => {
@@ -198,6 +199,16 @@ export const ChowkMapScreen: React.FC = () => {
 
             <Badge type="verified" label="Live GPS" />
           </div>
+
+          {/* Safety-in-numbers — only shown to workers who've opted into safety mode */}
+          {profile?.isWoman && profile?.safetyMode && (
+            <div className="flex items-center gap-2 p-2.5 rounded-card bg-[#FBEAF0] border border-[#D4537E]/30">
+              <UserRound className="w-4 h-4 text-[#993556] shrink-0" />
+              <span className="text-body-sm font-bold text-[#72243E]">
+                {t('chowkMap.womenNearby', { count: 3 })}
+              </span>
+            </div>
+          )}
 
           <p className="text-[11px] text-text-secondary italic">
             {t('chowkMap.hotspots')}

@@ -96,7 +96,8 @@
     "allTrades": "सभी काम",
     "noJobsForTrade": "इस काम में अभी कोई नया काम नहीं है",
     "mute": "म्यूट करें",
-    "unmute": "आवाज़ चालू करें"
+    "unmute": "आवाज़ चालू करें",
+    "womanPreferred": "महिला कारीगर पसंद है"
   },
   "quotes": {
     "title": "मेरी बोलियां",
@@ -158,7 +159,9 @@
     "mediaRequiredVideo": "पहले काम का वीडियो रिकॉर्ड करें",
     "mediaRequiredPhotos": "पहले काम की कम से कम एक फ़ोटो जोड़ें",
     "suggestedWorkers": "सुझाए गए कारीगर",
-    "browseAll": "सभी देखें"
+    "browseAll": "सभी देखें",
+    "preferWoman": "महिला कारीगर पसंद है",
+    "preferWomanHelp": "कारीगरों को एक पसंद के तौर पर दिखेगा, किसी से यह काम छुपाया नहीं जाता"
   },
   "negotiation": {
     "chatTitle": "बातचीत और मोलभाव",
@@ -195,7 +198,13 @@
     "qrEmployerHelp": "कारीगर को यह QR दिखाएं, या उनका स्कैन करें, ताकि काम शुरू होने की पुष्टि हो।",
     "qrCodeFor": "इस {job} काम के लिए QR",
     "qrSimulateStart": "स्कैन करें और शुरू करें",
-    "qrSimulateEnd": "स्कैन करें और खत्म करें"
+    "qrSimulateEnd": "स्कैन करें और खत्म करें",
+    "safetyTitle": "सुरक्षा",
+    "shareLocationHelp": "इस काम के दौरान आप अपनी लाइव लोकेशन अपने इमरजेंसी संपर्क के साथ साझा कर सकते हैं",
+    "shareLocation": "लाइव लोकेशन साझा करें",
+    "stopSharing": "साझा करना बंद करें",
+    "sharingWith": "{name} के साथ आपकी लाइव लोकेशन साझा हो रही है",
+    "emergencyContactFallback": "आपके इमरजेंसी संपर्क"
   },
   "rating": {
     "title": "अनुभव को रेटिंग दें",
@@ -235,7 +244,8 @@
     "summaryCardTitle": "चौक पर इस समय की हलचल",
     "workersNearbyCount": "आस-पास 48 कुशल कारीगर मौजूद",
     "jobsNearbyCount": "14 नए काम उपलब्ध हैं",
-    "hotspots": "व्यस्त चौक: लाजपत नगर, नेहरू प्लेस, ओखला"
+    "hotspots": "व्यस्त चौक: लाजपत नगर, नेहरू प्लेस, ओखला",
+    "womenNearby": "आस-पास {count} महिला कारीगर भी मौजूद हैं"
   },
   "profile": {
     "title": "मेरी प्रोफाइल",
@@ -259,7 +269,16 @@
     "call": "कॉल करें",
     "reviews": "समीक्षाएं",
     "noReviewsYet": "अभी कोई समीक्षा नहीं",
-    "paidOnTime": "समय पर भुगतान"
+    "paidOnTime": "समय पर भुगतान",
+    "safetyTitle": "सुरक्षा",
+    "isWomanLabel": "मैं महिला कारीगर हूं",
+    "isWomanHelp": "वैकल्पिक। इससे मालिकों को महिला कारीगर पसंद वाला काम दिखेगा, और नीचे सुरक्षा मोड खुलेगा",
+    "safetyModeLabel": "सुरक्षा मोड",
+    "safetyModeHelp": "काम के दौरान एक इमरजेंसी संपर्क और लाइव लोकेशन साझा करने का विकल्प जोड़ता है",
+    "emergencyContact": "इमरजेंसी संपर्क",
+    "emergencyNamePlaceholder": "संपर्क का नाम",
+    "emergencyPhonePlaceholder": "संपर्क का फ़ोन नंबर",
+    "emergencyContactHelp": "काम के दौरान हम इस व्यक्ति के साथ आपकी लाइव लोकेशन साझा करने का विकल्प देंगे"
   },
   "diary": {
     "title": "कमाई डायरी (लेखा-जोखा)",

@@ -23,6 +23,8 @@ import {
   Phone,
   CheckCircle2,
   Play,
+  UserRound,
+  LifeBuoy,
 } from 'lucide-react';
 
 export const WorkerProfileScreen: React.FC = () => {
@@ -35,6 +37,8 @@ export const WorkerProfileScreen: React.FC = () => {
   const profile = getProfile(currentUserId);
 
   const [isEditingRadius, setIsEditingRadius] = useState(false);
+  const [emergencyName, setEmergencyName] = useState(profile?.emergencyContactName || '');
+  const [emergencyPhone, setEmergencyPhone] = useState(profile?.emergencyContactPhone || '');
 
   const handleRoleSwitch = () => {
     switchRole(currentRole === 'worker' ? 'employer' : 'worker');
@@ -165,6 +169,61 @@ export const WorkerProfileScreen: React.FC = () => {
                   />
                 ))}
               </div>
+            )}
+          </Card>
+        )}
+
+        {/* Women's safety — self-ID unlocks an optional safety mode */}
+        {currentRole === 'worker' && (
+          <Card className="p-4 bg-white border-border-subtle shadow-tier-1 flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <LifeBuoy className="w-4 h-4 text-secondary" />
+              <h3 className="text-title-md font-bold text-on-surface">{t('profile.safetyTitle')}</h3>
+            </div>
+
+            <Toggle
+              checked={profile?.isWoman ?? false}
+              onChange={(val) => updateProfile(currentUserId, { isWoman: val, safetyMode: val ? profile?.safetyMode : false })}
+              label={t('profile.isWomanLabel')}
+              sublabel={t('profile.isWomanHelp')}
+            />
+
+            {profile?.isWoman && (
+              <>
+                <div className="pt-2 border-t border-border-subtle">
+                  <Toggle
+                    checked={profile?.safetyMode ?? false}
+                    onChange={(val) => updateProfile(currentUserId, { safetyMode: val })}
+                    label={t('profile.safetyModeLabel')}
+                    sublabel={t('profile.safetyModeHelp')}
+                  />
+                </div>
+
+                {profile?.safetyMode && (
+                  <div className="flex flex-col gap-2.5 pt-2 border-t border-border-subtle">
+                    <label className="text-label-md font-bold text-text-secondary">
+                      {t('profile.emergencyContact')}
+                    </label>
+                    <input
+                      type="text"
+                      value={emergencyName}
+                      onChange={(e) => setEmergencyName(e.target.value)}
+                      onBlur={() => updateProfile(currentUserId, { emergencyContactName: emergencyName })}
+                      placeholder={t('profile.emergencyNamePlaceholder')}
+                      className="w-full min-h-[48px] px-3.5 rounded-button bg-surface-canvas border-[1.5px] border-border-subtle focus:border-secondary focus:ring-1 focus:ring-secondary text-body-md text-on-surface"
+                    />
+                    <input
+                      type="tel"
+                      value={emergencyPhone}
+                      onChange={(e) => setEmergencyPhone(e.target.value)}
+                      onBlur={() => updateProfile(currentUserId, { emergencyContactPhone: emergencyPhone })}
+                      placeholder={t('profile.emergencyPhonePlaceholder')}
+                      className="w-full min-h-[48px] px-3.5 rounded-button bg-surface-canvas border-[1.5px] border-border-subtle focus:border-secondary focus:ring-1 focus:ring-secondary text-body-md text-on-surface tabular-nums"
+                    />
+                    <p className="text-[11px] text-text-secondary">{t('profile.emergencyContactHelp')}</p>
+                  </div>
+                )}
+              </>
             )}
           </Card>
         )}

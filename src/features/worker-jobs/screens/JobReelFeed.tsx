@@ -23,6 +23,7 @@ import {
   Paintbrush,
   BrickWall,
   HardHat,
+  UserRound,
 } from 'lucide-react';
 import { Job } from '../../../data/types';
 
@@ -55,6 +56,7 @@ export const JobReelFeed: React.FC = () => {
   const [selectedJobForQuote, setSelectedJobForQuote] = useState<Job | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [tradeFilter, setTradeFilter] = useState<string>('all');
+  const [womanPreferredOnly, setWomanPreferredOnly] = useState(false);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const scrollRafRef = useRef<number | null>(null);
@@ -75,12 +77,14 @@ export const JobReelFeed: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUserId, getJobsForWorkerFeed, jobs]);
 
-  // The trade filter narrows what's actually scrollable — every index/scroll
-  // calculation below operates on this list, not the unfiltered one.
-  const visibleJobs = useMemo(
-    () => (tradeFilter === 'all' ? availableJobs : availableJobs.filter((j) => j.trade === tradeFilter)),
-    [availableJobs, tradeFilter]
-  );
+  // The trade + woman-preferred filters narrow what's actually scrollable —
+  // every index/scroll calculation below operates on this list, not the
+  // unfiltered one.
+  const visibleJobs = useMemo(() => {
+    let list = tradeFilter === 'all' ? availableJobs : availableJobs.filter((j) => j.trade === tradeFilter);
+    if (womanPreferredOnly) list = list.filter((j) => j.preferWomanWorker);
+    return list;
+  }, [availableJobs, tradeFilter, womanPreferredOnly]);
 
   const tradeCounts = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -98,7 +102,7 @@ export const JobReelFeed: React.FC = () => {
     setActiveIndex(0);
     const container = scrollRef.current;
     if (container) container.scrollTo({ top: 0 });
-  }, [tradeFilter]);
+  }, [tradeFilter, womanPreferredOnly]);
 
   // The scroll container reserves bottom padding to clear the fixed BottomNav (see
   // the `pb-16` below), so each snap card renders slightly shorter than the
@@ -189,6 +193,16 @@ export const JobReelFeed: React.FC = () => {
             className={tradeFilter === trade.id ? '' : 'bg-white/10 text-white border-white/20'}
           />
         ))}
+        {availableJobs.some((j) => j.preferWomanWorker) && (
+          <Chip
+            size="sm"
+            label={t('workerJobs.womanPreferred')}
+            icon={<UserRound className="w-3.5 h-3.5" />}
+            selected={womanPreferredOnly}
+            onClick={() => setWomanPreferredOnly((prev) => !prev)}
+            className={womanPreferredOnly ? '' : 'bg-white/10 text-white border-white/20'}
+          />
+        )}
       </div>
 
       {/* Scrollable, snap-to-card reel viewport — swipe/scroll to move between jobs,

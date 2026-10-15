@@ -96,7 +96,8 @@
     "allTrades": "All trades",
     "noJobsForTrade": "No open jobs in this trade right now",
     "mute": "Mute",
-    "unmute": "Unmute"
+    "unmute": "Unmute",
+    "womanPreferred": "Woman worker preferred"
   },
   "quotes": {
     "title": "My quotes",
@@ -158,7 +159,9 @@
     "mediaRequiredVideo": "Record a video of the work first",
     "mediaRequiredPhotos": "Add at least one photo of the work first",
     "suggestedWorkers": "Suggested workers",
-    "browseAll": "Browse all"
+    "browseAll": "Browse all",
+    "preferWoman": "Prefer a woman worker",
+    "preferWomanHelp": "Shown to workers as a preference, never used to hide this job from anyone"
   },
   "negotiation": {
     "chatTitle": "Negotiation",
@@ -195,7 +198,13 @@
     "qrEmployerHelp": "Show this QR to the worker, or scan theirs, to confirm the job is starting.",
     "qrCodeFor": "QR for this {job} job",
     "qrSimulateStart": "Simulate scan & start",
-    "qrSimulateEnd": "Simulate scan & finish"
+    "qrSimulateEnd": "Simulate scan & finish",
+    "safetyTitle": "Safety",
+    "shareLocationHelp": "You can share your live location with your emergency contact while this job is in progress",
+    "shareLocation": "Share live location",
+    "stopSharing": "Stop sharing",
+    "sharingWith": "Sharing your live location with {name}",
+    "emergencyContactFallback": "your emergency contact"
   },
   "rating": {
     "title": "Rate your experience",
@@ -235,7 +244,8 @@
     "summaryCardTitle": "Chowk activity right now",
     "workersNearbyCount": "48 skilled tradespeople nearby",
     "jobsNearbyCount": "14 active jobs available",
-    "hotspots": "Busiest chowks: Lajpat Nagar, Nehru Place, Okhla"
+    "hotspots": "Busiest chowks: Lajpat Nagar, Nehru Place, Okhla",
+    "womenNearby": "{count} women workers checked in nearby too"
   },
   "profile": {
     "title": "Profile",
@@ -259,7 +269,16 @@
     "call": "Call",
     "reviews": "Reviews",
     "noReviewsYet": "No reviews yet",
-    "paidOnTime": "Paid on time"
+    "paidOnTime": "Paid on time",
+    "safetyTitle": "Safety",
+    "isWomanLabel": "I'm a woman worker",
+    "isWomanHelp": "Optional. Lets employers show jobs where a woman worker is preferred, and unlocks safety mode below",
+    "safetyModeLabel": "Safety mode",
+    "safetyModeHelp": "Adds an emergency contact and a share-live-location option while a job is in progress",
+    "emergencyContact": "Emergency contact",
+    "emergencyNamePlaceholder": "Contact's name",
+    "emergencyPhonePlaceholder": "Contact's phone number",
+    "emergencyContactHelp": "We'll offer to share your live location with this person during a job"
   },
   "diary": {
     "title": "Kamai diary (Earnings)",

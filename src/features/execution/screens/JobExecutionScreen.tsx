@@ -24,6 +24,8 @@ import {
   MessageSquare,
   QrCode,
   ScanLine,
+  LifeBuoy,
+  Navigation,
 } from 'lucide-react';
 
 export const JobExecutionScreen: React.FC = () => {
@@ -32,7 +34,7 @@ export const JobExecutionScreen: React.FC = () => {
   const { currentRole, currentUserId } = useMockAuthSession();
   const { getJobById, updateJobStatus, refreshJobs } = useJobs();
   const { getThreadByJobAndWorker } = useNegotiation();
-  const { getUser } = useProfile();
+  const { getUser, getProfile } = useProfile();
   const navigate = useNavigate();
 
   const job = getJobById(jobId || '');
@@ -44,6 +46,11 @@ export const JobExecutionScreen: React.FC = () => {
   // status jump, instead of just tapping a button with nothing behind it.
   const [qrStep, setQrStep] = useState<'start' | 'end' | null>(null);
   const [qrConfirming, setQrConfirming] = useState(false);
+
+  // Women's safety — share-live-location is a mock toggle, offered only when
+  // the worker has opted into safety mode on their profile.
+  const workerProfile = currentRole === 'worker' ? getProfile(currentUserId) : undefined;
+  const [locationShared, setLocationShared] = useState(false);
 
   if (!job) {
     return (
@@ -172,6 +179,37 @@ export const JobExecutionScreen: React.FC = () => {
             </div>
           </div>
         </Card>
+
+        {/* Women's safety — share-live-location, only while the job is actually
+            in progress and only for workers who opted into safety mode */}
+        {workerProfile?.safetyMode && internalStatus === 'in_progress' && (
+          <Card className="p-4 bg-white border-border-subtle shadow-tier-1 flex flex-col gap-2.5">
+            <div className="flex items-center gap-2">
+              <LifeBuoy className="w-4 h-4 text-secondary" />
+              <h3 className="text-title-md font-bold text-on-surface">{t('execution.safetyTitle')}</h3>
+            </div>
+            {locationShared ? (
+              <div className="flex items-center gap-2 p-3 rounded-card bg-success/10 border border-success/30 text-success font-bold text-body-sm">
+                <Navigation className="w-4 h-4 shrink-0" />
+                <span>
+                  {t('execution.sharingWith', {
+                    name: workerProfile.emergencyContactName || t('execution.emergencyContactFallback'),
+                  })}
+                </span>
+              </div>
+            ) : (
+              <p className="text-body-sm text-text-secondary">{t('execution.shareLocationHelp')}</p>
+            )}
+            <Button
+              variant={locationShared ? 'secondary' : 'primary'}
+              fullWidth
+              onClick={() => setLocationShared((prev) => !prev)}
+              icon={<Navigation className="w-4 h-4 text-[#111B21]" />}
+            >
+              {locationShared ? t('execution.stopSharing') : t('execution.shareLocation')}
+            </Button>
+          </Card>
+        )}
 
         {/* Step Action Button */}
         <div className="mt-auto pt-4 flex flex-col gap-2">

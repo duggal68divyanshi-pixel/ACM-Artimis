@@ -75,6 +75,7 @@ export const PostJob: React.FC = () => {
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [mediaError, setMediaError] = useState<string | null>(null);
+  const [preferWomanWorker, setPreferWomanWorker] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -108,6 +109,7 @@ export const PostJob: React.FC = () => {
         timeSlot: urgency === 'scheduled' ? undefined : timeSlot,
         scheduledFor: urgency === 'scheduled' ? scheduledDate : undefined,
         paymentTiming,
+        preferWomanWorker,
       });
 
       setIsSubmitting(false);
@@ -423,6 +425,26 @@ export const PostJob: React.FC = () => {
               ))}
             </div>
           </div>
+
+          {/* 7. Woman worker preference (optional, informational — surfaced as a
+              feed filter for interested workers, never used to exclude anyone) */}
+          <button
+            type="button"
+            onClick={() => setPreferWomanWorker((prev) => !prev)}
+            className={`p-3.5 rounded-button border-[1.5px] flex items-center justify-between text-left transition-all ${
+              preferWomanWorker
+                ? 'border-secondary bg-secondary/10'
+                : 'border-border-subtle bg-white'
+            }`}
+          >
+            <div>
+              <span className="text-body-md font-bold text-on-surface block">
+                {t('employerJobs.preferWoman')}
+              </span>
+              <span className="text-body-sm text-text-secondary">{t('employerJobs.preferWomanHelp')}</span>
+            </div>
+            {preferWomanWorker && <CheckCircle2 className="w-5 h-5 text-secondary shrink-0" />}
+          </button>
 
           {/* Post Job Button (56px+ height pinned to bottom) */}
           <div className="pt-3">
